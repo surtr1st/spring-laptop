@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ps17931</groupId>
-	<artifactId>PS17931_TranChi_Lab8</artifactId>
+	<artifactId>SpringLaptop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>PS17931_TranChi_Lab8</name>
+	<name>SpringLaptop</name>
 	<description>Lab8</description>
 	<properties>
 		<java.version>17</java.version>

@@ -6,10 +6,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class Lab8Application {
+public class SpringLaptopApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Lab8Application.class, args);
+		SpringApplication.run(SpringLaptopApplication.class, args);
 	}
 
 }

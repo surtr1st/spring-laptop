@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="cart-list" class="container">
+    <main class="my-2">
+        <section class="h-75">
+            <div class="container py-1" style="height: 480px;">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="text-center">
+                                <tr>
+                                    <th scope="col" class="h5">Item</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Edit</th>
+                                </tr>
+                                </thead>
+                                <tbody class="text-center align-middle">
+                                <tr class="align-items-center" th:each="cart : ${carts}" th:object="${cart}">
+                                    <td>
+                                        <img alt="#"
+                                             th:src="@{|/assets/images/products/*{image}|}"
+                                             class="img-fluid" style="max-width: 15rem;"></td>
+                                    <td>
+                                        <h3 th:text="*{name}"></h3>
+                                    </td>
+                                    <td style="max-width: 250px; max-height: 100px;">
+                                        <form th:action="@{/cart}" method="post">
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <button
+                                                        th:formaction="@{|/cart/update/*{id}/inc|}"
+                                                        class="btn btn-success">&#65291;</button>
+                                                <input name="quantity" th:value="*{quantity}"
+                                                       class="form-control m-2 text-center"
+                                                       style="max-width: 70px;">
+                                                <button
+                                                        th:formaction="@{|/cart/update/*{id}/dec|}"
+                                                        class="btn btn-danger">&#8722;</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td style="max-width: 100px; max-height: 100px;">
+                                        <span th:text="*{price}">$</span>
+                                    </td>
+                                    <td style="max-width: 100px; max-height: 100px;">
+                                        <a
+                                                class="text-decoration-none text-danger text-uppercase fw-bold"
+                                                th:href="@{|/cart/remove/*{id}|}">Remove</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h3 class="text-center text-danger" th:text="${msg}"></h3>
+                        <form action="/cart/checkout" method="post">
+                            <div class="row my-2">
+                                <div class="col">
+                                    <input name="address" type="text" class="form-control" placeholder="Address">
+                                </div>
+                                <div class="col">
+                                    <input name="phoneNumber" class="form-control"
+                                           placeholder="Phone Num. for contact">
+                                </div>
+                            </div>
+                            <th:block th:if="${hasItem > 0}">
+                                <button class="btn btn-lg btn-warning text-center mb-5 float-end">Checkout</button>
+                            </th:block>
+                            <th:block th:if="${hasItem eq 0}">
+                                <button disabled class="btn btn-lg btn-warning text-center mb-5 float-end">Checkout</button>
+                            </th:block>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="navibar">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-black row">
+        <div class="container px-5">
+            <a class="navbar-brand" href="/index"><img th:src="@{/assets/logo/springlaptop-logo.png}" class="w-75 img-fluid"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/index">Home</a></li>
+                    <li class="nav-item"><a id="about" class="nav-link" href="/index">About</a></li>
+                    <li class="nav-item"><a id="contact" class="nav-link" href="/index">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/product">Products</a></li>
+                    <li class="nav-item dropdown">
+                        <th:block th:unless="${#request.remoteUser}">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" th:href="@{/auth/login/form}">Log In</a></li>
+                                <li><a class="dropdown-item" th:href="@{/account/register}">Register</a></li>
+                            </ul>
+                        </th:block>
+                        <th:block th:if="${#request.remoteUser}">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenu">
+                                <li><a class="dropdown-item" th:href="@{/account/profile}">Profile</a></li>
+                                <li th:if="${#request.isUserInRole('ADMIN')}"><a class="dropdown-item" th:href="@{/admin}">Dashboard</a></li>
+                                <li><a class="dropdown-item" th:href="@{/cart}">Cart</a></li>
+                                <li><a class="dropdown-item" th:href="@{/auth/logout}">Log Out</a></li>
+                            </ul>
+                        </th:block>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+</html>

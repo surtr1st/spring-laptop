@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="container" th:fragment="product-list">
+    <main>
+        <section class="py-5">
+            <div class="container px-5 my-5">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="text-center">
+                            <h1 class="fw-bolder gradient-text-underline mb-3">Products</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-center">
+                    <ul class="d-inline-block">
+                        <li th:each="brand : ${brands}" class="d-inline-block">
+                            <a class="btn btn-primary" th:href="@{|/product/brand/${brand.bid}|}" th:text="${brand.bid}"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <form th:action="@{/product/price-range}" method="post">
+                        <div class="wrapper">
+                            <div class="price-input">
+                                <div class="field">
+                                    <span>Min</span>
+                                    <input type="number" class="input-min" th:value="${min}">
+                                </div>
+                                <div class="separator">-</div>
+                                <div class="field">
+                                    <span>Max</span>
+                                    <input type="number" class="input-max" th:value="${max}">
+                                </div>
+                            </div>
+                            <div class="slider">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="range-input">
+                                <input
+                                        name="from"
+                                        type="range"
+                                        class="range-min"
+                                        th:value="${min}"
+                                        min="0" max="10000" step="1">
+                                <input
+                                        name="to"
+                                        type="range"
+                                        class="range-max"
+                                        th:value="${max}"
+                                        min="0" max="10000" step="1">
+                            </div>
+                        </div>
+                        <div class="my-3 text-center">
+                            <button class="btn btn-success text-white">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="row gx-5">
+                    <div class="col-lg-4 mb-5" th:each="prod : ${products}" th:object="${prod}">
+                        <div class="text-center shadow rounded-5 row">
+                            <div class="card-header bg-primary text-white fw-bold py-2">
+                                <h2 class="py-2" th:text="*{brand + ' ' + name}"></h2>
+                            </div>
+                            <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 300px;">
+                                <img th:src="@{|/assets/images/products/*{image}|}" class="img-fluid w-75">
+                            </div>
+                            <div class="bg-white align-middle">
+                                <th:block th:unless="${#request.remoteUser}">
+                                    <a th:href="@{/auth/login/form}" class="btn btn-outline-light text-primary" style="min-width: 100%;">
+                                        <h3 th:text="*{#numbers.formatCurrency(price * discount)}">$ </h3>
+                                    </a>
+                                </th:block>
+                                <th:block th:if="${#request.remoteUser}">
+                                    <a th:href="@{|/cart/add/*{id}|}" class="btn btn-outline-light text-primary" style="min-width: 100%;">
+                                        <h3 th:text="*{#numbers.formatCurrency(price * discount)}">$ </h3>
+                                    </a>
+                                </th:block>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+</html>

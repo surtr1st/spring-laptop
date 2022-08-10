@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>Registered Successfully</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/signin.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/responsive.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/scss/main.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Albert Sans', sans-serif;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="container">
+        <div class="text-center my-auto">
+            <h1 class="display-1 text-success">SUCCESS</h1>
+            <h3 class="text-dark">You will redirect in 3 seconds.</h3>
+        </div>
+    </div>
+</div>
+<script>
+    setTimeout(() => {
+        window.location.href = '/auth/login/form'
+    }, 3000)
+</script>
+</body>
+</html>

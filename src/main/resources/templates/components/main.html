@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div th:fragment="main">
+        <main>
+        <!-- Features section-->
+            <section class="py-5" id="features">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 text-center">
+                        <div class="mb-5 mb-lg-0"><h2 class="display-3 fw-bolder mb-0 gradient-text">Superb Laptops</h2></div>
+                    </div>
+                </div>
+            </section>
+            <!-- Testimonial section-->
+            <div class="py-5 bg-light">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-10 col-xl-7">
+                            <div class="text-center">
+                                <div class="fs-4 mb-4 fst-italic">"Our website have the responsibility to provide our customers the utmost perfect products"</div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                                    <div class="fw-bold">
+                                        Spring Laptop
+                                        <span class="fw-bold text-primary mx-1">/</span>
+                                        CEO
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Blog preview section-->
+            <section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+                            <div class="text-center">
+                                <h1 class="fw-bolder gradient-text-underline mb-3">Products</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gx-5">
+                        <div class="container-fluid">
+                            <div class="computer_main">
+                                <div class="row">
+                                    <div class="col-md-4 prod-box" th:each="prod, state : ${products}" th:unless="${state.index > 2}">
+                                        <div class="computer_img">
+                                            <img th:src="@{|/assets/images/products/${prod.image}|}">
+                                        </div>
+                                        <h4 class="computer_text" th:text="${prod.brand}"></h4>
+                                        <div class="computer_text_main">
+                                            <h4 class="dell_text" th:text="${prod.name}"></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-5" >
+                        </div>
+                    </div>
+                    <!-- Call to action-->
+                    <aside class="bg-dark bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+                        <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+                            <div class="mb-4 mb-xl-0">
+                                <div class="fs-1 fw-bold text-white">New <span class="gradient-text bg-dark">products</span>, delivered to <span class="gradient-text bg-dark">you.</span></div>
+                                <div class="text-white-50 fs-5">Sign up for our newsletter for the latest updates.</div>
+                            </div>
+                            <div class="ms-xl-4">
+                                <div class="mb-2">
+                                    <textarea class="form-control" cols="30" rows="10" wrap="soft" placeholder="Description"></textarea>
+                                </div>
+                                <div class="input-group mb-2">
+                                    <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
+                                    <button class="btn btn-outline-primary" id="button-newsletter" type="button">Send</button>
+                                </div>
+                                <div class="small text-white-50">We care about privacy, and will never share your data.</div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+        </main>
+    </div> 
+</html>

@@ -1,0 +1,34 @@
+spring:
+    datasource:
+        url: jdbc:sqlserver://localhost;databaseName=J6Lab8;encrypt=true;trustServerCertificate=true;
+        username: sa
+        password: 2201
+        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    jpa:
+        properties:
+            hibernate: 
+                dialect: org.hibernate.dialect.SQLServer2012Dialect
+        hibernate:            
+            show-sql: true
+            ddl-auto: none
+    servlet:
+        multipart:
+            enabled: true
+            max-file-size: 100MB
+            max-request-size: 100MB
+    mvc:
+        hidden-method:
+            filter:
+                enable: true
+    mail:
+        properties:
+            mail:
+                smtp:
+                    starttls:
+                        enable: 'true'
+                smpt:
+                    auth: 'true'
+        host: smtp.gmail.com
+        username: chitps17931@fpt.edu.vn
+        password: mostima1
+        port: '587'

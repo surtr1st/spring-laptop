@@ -1,0 +1,14 @@
+textarea {
+    resize: none;
+}
+.card-hover {
+    border: 1px solid transparent;
+    border-radius: 2rem;
+    padding: 2rem;
+    transition: 250ms ease all;
+}
+
+.card-hover:hover {
+    cursor: pointer;
+    border: 1px solid white;
+}

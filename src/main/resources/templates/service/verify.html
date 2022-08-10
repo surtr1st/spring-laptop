@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/assets/scss/main.css}">
+<title>Verify Code</title>
+</head>
+<body>
+	<div class="container py-1">
+		<section class="row my-3">
+			<div class="col-lg-8 m-auto overflow-hidden">
+				<h2 class="py-3 text-primary text-center text-uppercase fw-bold">Verify
+					Code</h2>
+				<h4 class="text-center fw-bold text-uppercase text-success" th:text="${msg}"></h4>
+				<div class="py-5 px-5">
+					<form th:action="@{/account/verify}" method="post">
+						<div class="mb-3 col-lg-8 m-auto">
+							<label for="c" class="form-label">Code</label> <input
+								name="code" type="text" class="form-control fw-bold" id="c">
+						</div>
+						<div class="mb-3 text-center">
+							<em class="text-danger fst-italic" th:text="${msg}"></em>
+						</div>
+						<div class="mb-3 text-center">
+							<div class="my-2 col">
+								<button class="btn btn-lg btn-success">Submit</button>
+							</div>
+							<a class="text-primary text-decoration-none" th:href="@{/index}">Back to Home</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>
